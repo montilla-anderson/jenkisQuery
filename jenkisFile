@@ -1,0 +1,18 @@
+pipeline{
+    agent none
+	options {
+		timeout(time: 1, unit: 'HOURS')
+	}
+    
+    stages{
+        stage('compiler stage'){
+            steps{
+                
+                withMaven(maven: 'maven_3_5_0'){
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+    }
+}
